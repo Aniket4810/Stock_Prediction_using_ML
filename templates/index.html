@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0/dist/chartjs-adapter-moment.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Predictor</h1>
+
+        <div class="search-controls">
+             <div class="search-container">
+                <input type="text" id="companySearch" placeholder="Search for a company (e.g., Apple, TSLA)...">
+                <div id="suggestions" class="suggestions-list"></div>
+            </div>
+            <div class="prediction-days-container">
+                 <label for="predictionDays">Predict Days:</label>
+                 <select id="predictionDays">
+                     <option value="7">7 Days</option>
+                     <option value="30" selected>30 Days</option>
+                     <option value="90">90 Days</option>
+                     <option value="180">180 Days</option>
+                 </select>
+            </div>
+        </div>
+
+
+        <div id="results" class="results-container" style="display: none;">
+            <h2 id="result-title">Prediction Results</h2>
+
+            <!-- New Stats Section -->
+            <div id="latest-stats" class="stats-section">
+                <h3>Latest Trading Day Stats (<span id="stats-date"></span>)</h3>
+                <div class="stats-grid">
+                    <div><strong>Open:</strong> <span id="stats-open"></span></div>
+                    <div><strong>High:</strong> <span id="stats-high"></span></div>
+                    <div><strong>Low:</strong> <span id="stats-low"></span></div>
+                    <div><strong>Close:</strong> <span id="stats-close"></span></div>
+                    <div class="stats-volume"><strong>Volume:</strong> <span id="stats-volume"></span></div>
+                </div>
+                 <div class="yahoo-link-container">
+                     <a id="yahoo-link" href="#" target="_blank" rel="noopener noreferrer">View on Yahoo Finance</a>
+                 </div>
+            </div>
+            <!-- End Stats Section -->
+
+            <p id="accuracy-info"></p> <!-- Model fit info -->
+
+            <div class="chart-container">
+                <canvas id="stockChart"></canvas>
+            </div>
+
+            <!-- New Volume Chart -->
+            <div class="chart-container volume-chart-container">
+                 <canvas id="volumeChart"></canvas>
+            </div>
+             <!-- End Volume Chart -->
+
+            <p id="error-message" class="error"></p>
+            <div id="loading-indicator" style="display: none;">Loading...</div>
+        </div>
+
+        <div id="initial-message">
+            <p>Type a company name or ticker symbol, select prediction days, and press Enter or choose a suggestion.</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

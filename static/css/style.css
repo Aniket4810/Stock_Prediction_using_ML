@@ -1,0 +1,223 @@
+/* Add these styles to your existing style.css file */
+
+.search-controls {
+    display: flex;
+    gap: 15px; /* Space between search and prediction days */
+    align-items: flex-end; /* Align items to the bottom */
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.search-container {
+    flex-grow: 1; /* Allow search bar to take available space */
+    min-width: 250px; /* Minimum width for the search */
+}
+
+.prediction-days-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#predictionDays {
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+/* Suggestions list might need adjustment if overlapping */
+.suggestions-list {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    /* Adjust width calculation if needed based on parent */
+    width: calc(100% - 2px);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: none;
+    box-sizing: border-box;
+}
+
+
+/* Stats Section Styling */
+.stats-section {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.stats-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    color: #495057;
+    text-align: center;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid */
+    gap: 10px;
+    font-size: 0.95em;
+    color: #343a40;
+}
+
+.stats-grid div {
+    background-color: #fff;
+    padding: 8px 10px;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+}
+
+.stats-volume {
+    grid-column: span 2; /* Make volume span more width if needed */
+    text-align: center;
+}
+
+
+.yahoo-link-container {
+    text-align: center;
+    margin-top: 15px;
+}
+
+#yahoo-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+#yahoo-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Volume Chart Container */
+.volume-chart-container {
+    height: 15vh; /* Smaller height for volume chart */
+    margin-top: 20px; /* Space between price and volume charts */
+    border-top: 1px solid #e0e0e0; /* Separator line */
+    padding-top: 15px;
+}
+
+
+/* Existing chart container */
+.chart-container {
+    position: relative;
+    height: 40vh; /* Adjust height as needed */
+    width: 100%;
+}
+
+/* --- Add other existing styles here --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* background-color: #f4f7f6; */ /* You can remove or comment out the solid background color */
+    color: #333; /* Default text color - might need adjustment based on image */
+    margin: 0;
+    padding: 20px; /* Padding still applies inside the body */
+    display: flex;
+    justify-content: center;
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+
+    /* --- Background Image Styles --- */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), /* Optional: Dark overlay for readability */
+                      url('../images/stocks.jpg'); /* Adjust filename! Path relative to CSS file */
+
+    background-size: cover; /* Scale the image to cover the entire background area */
+    background-position: center center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed; /* Fix the background image, it won't scroll with content */
+    /* --- End Background Image Styles --- */
+}
+
+/* Optional: Ensure main container still stands out */
+.container {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white background for the container */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    width: 100%;
+    max-width: 900px;
+    box-sizing: border-box;
+    z-index: 1; /* Ensure container is above pseudo-elements if used */
+    position: relative; /* Needed for z-index stacking */
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* ... (rest of your existing CSS) ... */
+
+#companySearch {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+#companySearch:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.results-container {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background-color: #fdfdfd;
+}
+
+#result-title {
+    color: #34495e;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#accuracy-info {
+    text-align: center;
+    font-size: 1em; /* Slightly smaller */
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+#accuracy-info strong {
+    font-size: 1.1em;
+}
+
+
+#loading-indicator {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2em;
+    color: #3498db;
+}
+
+.error {
+    color: #e74c3c;
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+#initial-message {
+     text-align: center;
+     color: #7f8c8d;
+     margin-top: 40px;
+     font-style: italic;
+}
